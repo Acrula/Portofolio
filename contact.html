@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Contact - Canard` Gamer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
+
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #312e81;
+      --background-color: #020617;
+      --card-bg: #1e293b;
+      --text-color: #f1f5f9;
+      --accent-color: #8b5cf6;
+      --accent-hover: #7c3aed;
+      --highlight-color: #06b6d4;
+      --neon-glow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+      --text-glow: 0 0 2px rgba(139, 92, 246, 0.8);
+    }
+
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--background-color);
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5cf6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-height: 48px;
+      min-width: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before, a:focus::before {
+      width: 100%;
+    }
+
+    a:hover, a:focus {
+      color: var(--accent-color);
+      text-shadow: var(--text-glow);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    header {
+      background-color: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    header .logo {
+      font-family: 'Audiowide', cursive;
+      font-size: 2.5rem;
+      color: var(--text-color);
+      letter-spacing: 4px;
+      user-select: none;
+      text-shadow: var(--neon-glow);
+      position: relative;
+      display: inline-block;
+    }
+
+    header .logo::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    nav a { 
+      position: relative;
+      margin-left: 0.5rem;
+      border: 1px solid transparent;
+    }
+
+    nav a.active { 
+      background-color: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--accent-color);
+      box-shadow: var(--neon-glow);
+      color: var(--accent-color);
+    }
+
+    nav a:not(.active):hover {
+      background-color: rgba(139, 92, 246, 0.1);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+    }
+
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      text-shadow: var(--text-glow);
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+    }
+
+    #contact p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    #contact-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    #contact-links li {
+      display: flex;
+    }
+
+    #contact-links a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 1rem;
+      background-color: rgba(15, 23, 42, 0.5);
+      border-radius: 8px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #contact-links a:hover,
+    #contact-links a:focus {
+      background-color: rgba(139, 92, 246, 0.1);
+      border-color: var(--accent-color);
+      box-shadow: var(--neon-glow);
+      transform: translateY(-3px);
+    }
+
+    #contact-links img {
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    #contact-links a:hover img {
+      transform: scale(1.1);
+    }
+
+    #contact-links span {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    footer {
+      background-color: rgba(15, 23, 42, 0.9);
+      text-align: center;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      padding: 1.5rem 0;
+      user-select: none;
+      border-top: 1px solid rgba(139, 92, 246, 0.3);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(139, 92, 246, 0.2);
+      border-radius: 50%;
+      color: var(--text-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 992px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 1.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        padding: 1rem;
+      }
+      
+      .logo {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+      
+      nav {
+        gap: 0.25rem;
+      }
+      
+      nav a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+      
+      main {
+        margin: 2rem auto;
+        padding: 0 1.25rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 1.7rem;
+      }
+      
+      #contact p {
+        font-size: 1.1rem;
+      }
+      
+      #contact-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .logo {
+        text-align: center;
+        width: 100%;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      nav a {
+        margin: 0.25rem;
+        font-size: 0.85rem;
+      }
+      
+      main {
+        padding: 0 1rem;
+        margin: 1.5rem auto;
+      }
+      
+      section {
+        padding: 1.25rem;
+      }
+      
+      section h2 {
+        font-size: 1.5rem;
+      }
+      
+      #contact-links a {
+        padding: 0.75rem;
+      }
+      
+      #contact-links img {
+        width: 32px;
+        height: 32px;
+        margin-right: 0.75rem;
+      }
+      
+      #contact-links span {
+        font-size: 1rem;
+      }
+      
+      footer {
+        padding: 1.25rem 0;
+      }
+      
+      .socials {
+        gap: 0.75rem;
+      }
+      
+      .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .logo {
+        font-size: 1.6rem;
+      }
+      
+      nav a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      
+      section {
+        padding: 1rem;
+      }
+      
+      section h2 {
+        font-size: 1.4rem;
+      }
+      
+      #contact-links a {
+        padding: 0.6rem;
+      }
+      
+      #contact-links img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo" tabindex="0" aria-label="Canard Gamer Portfolio logo">Canard`</div>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" tabindex="0">Home</a>
+      <a href="about.html" tabindex="0">About</a>
+      <a href="games.html" tabindex="0">Games Played</a>
+      <a href="contact.html" tabindex="0" class="active" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <section id="contact" tabindex="0">
+      <h2>Contact</h2>
+      <p>If you'd like to get in touch or follow my gaming journey, feel free to connect through these platforms.</p>
+      <ul id="contact-links" aria-label="Contact links">
+        <li>
+          <a href="https://www.instagram.com/acrula_?igsh=MTI4NGVtbmtpZTh5dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="assets/img/10462345.png" alt="Instagram" loading="lazy" />
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Acrula" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="assets/img/Github.png" alt="GitHub" loading="lazy" />
+            <span>GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:ahmadamirulahad@gmail.com" aria-label="Email contact">
+            <img src="assets/img/Gmail.png" alt="Email" loading="lazy" />
+            <span>Email</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Discord">👾</a>
+      <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+      <a href="#" class="social-icon" aria-label="Twitch">🎮</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+    </div>
+    &copy; 2025 Canard`. All rights reserved.
+  </footer>
+</body>
+</html>
