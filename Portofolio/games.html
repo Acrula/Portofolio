@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Games Played - MyPortfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
+
+    :root {
+      --primary-color: #0f172a; 
+      --secondary-color: #312e81; 
+      --background-color: #020617; 
+      --card-bg: #1e293b; 
+      --text-color: #f1f5f9; 
+      --accent-color: #8b5cf6; 
+      --accent-hover: #7c3aed; 
+      --stat-highlight: #10B981;
+      --neon-glow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+      --text-glow: 0 0 2px rgba(139, 92, 246, 0.8);
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .logo {
+      font-family: 'Audiowide', cursive;
+      font-size: 2.5rem;
+      color: var(--text-color);
+      letter-spacing: 4px;
+      user-select: none;
+      text-shadow: var(--neon-glow);
+      position: relative;
+      display: inline-block;
+    }
+
+    header .logo::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav a.active {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      flex: 1;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      user-select: none;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .game-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5 px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .game-image {
+      width: 100%;
+      height: auto; /* Adjust height to auto for responsive images */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .game-image img {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .game-card:hover .game-image img {
+      transform: scale(1.05);
+    }
+
+    .game-header {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .game-stats {
+      padding: 1.5rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .stat-highlight {
+      color: var(--stat-highlight);
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge.elite {
+      background: linear-gradient(135deg, #FF4500, #FFD700);
+    }
+
+    .badge.pro {
+      background: linear-gradient(135deg, #9333EA, #3B82F6);
+    }
+
+    footer {
+      background-color: rgba(15,  23, 42, 0.9);
+      text-align: center;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      padding: 1.5rem 0;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 0 1rem;
+        margin: 2rem auto 3rem;
+      }
+
+      section h2 {
+        font-size: 1.6rem;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-value {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo" tabindex="0" aria-label="Gamer logo and name">Canard`</div>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" tabindex="0">Home</a>
+      <a href="about.html" tabindex="0">About</a>
+      <a href="games.html" tabindex="0" class="active" aria-current="page">Games Played</a>
+      <a href="contact.html" tabindex="0">Contact</a>
+    </nav>
+  </header>
+  <main role="main">
+    <section id="games" tabindex="0">
+      <h2>Games Played</h2>
+      <div class="games-grid">
+        
+        <!-- Call of Duty Mobile -->
+        <div class="game-card">
+          <div class="game-image">
+            <img src="assets/img/codm.png" alt="Call of Duty Mobile" />
+          </div>
+          <div class="game-header">Call of Duty Mobile</div>
+          <div class="game-stats">
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-label">Playtime</div>
+                <div class="stat-value">1027 hrs</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Rank</div>
+                <div class="stat-value">Legendary</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">K/D Ratio</div>
+                <div class="stat-value stat-highlight">1.60</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value">68%</div>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge pro">Mastery</span>
+              <span class="badge">19x Legendary</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Delta Force Mobile -->
+        <div class="game-card">
+          <div class="game-image">
+            <img src="assets/img/Delta Force.png" alt="Delta Force Mobile" />
+          </div>
+          <div class="game-header">Delta Force Mobile</div>
+          <div class="game-stats">
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-label">Playtime</div>
+                <div class="stat-value">18 hrs</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Rank</div>
+                <div class="stat-value">Marshal</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value">18.9%</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Wins</div>
+                <div class="stat-value stat-highlight">148</div>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge elite">Sniper Master</span>
+              <span class="badge">Sniper Specialist</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+  <footer role="contentinfo">
+    &copy; 2025 Canard`. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Canard` Gamer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
+    
+    :root {
+      --primary-color: #0f172a; /* Dark blue/almost black */
+      --secondary-color: #312e81; /* Deep indigo */
+      --background-color: #020617; /* Very dark blue-black */
+      --card-bg: #1e293b; /* Slate-800 */
+      --text-color: #f1f5f9; /* Very light gray/almost white */
+      --accent-color: #8b5cf6; /* Purple-500 */
+      --accent-hover: #7c3aed; /* Purple-600 */
+      --highlight-color: #06b6d4; /* Cyan */
+      --neon-glow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
+      --text-glow: 0 0 2px rgba(139, 92, 246, 0.8);
+    }
+    
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--background-color);
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5cf6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    
+    a:hover::before, a:focus::before {
+      width: 100%;
+    }
+    
+    a:hover, a:focus {
+      color: var(--accent-color);
+      text-shadow: var(--text-glow);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    header {
+      background-color: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    header .logo {
+      font-family: 'Audiowide', cursive;
+      font-size: 2.5rem;
+      color: var(--text-color);
+      letter-spacing: 4px;
+      user-select: none;
+      text-shadow: var(--neon-glow);
+      position: relative;
+      display: inline-block;
+    }
+    
+    header .logo::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    nav a { 
+      position: relative;
+      margin-left: 0.5rem;
+      border: 1px solid transparent;
+    }
+    
+    nav a.active { 
+      background-color: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--accent-color);
+      box-shadow: var(--neon-glow);
+      color: var(--accent-color);
+    }
+    
+    nav a:not(.active):hover {
+      background-color: rgba(139, 92, 246, 0.1);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+    }
+
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-color);
+      text-shadow: var(--text-glow);
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+    }
+    
+    h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--highlight-color);
+      margin: 1.5rem 0 1rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .profile-pic {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--accent-color);
+      box-shadow: var(--neon-glow);
+      align-self: start;
+      position: relative;
+    }
+    
+    .profile-pic img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-pic:hover img {
+      transform: scale(1.05);
+    }
+    
+    .profile-pic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), transparent 80%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem 1.5rem;
+      background-color: rgba(15, 23, 42, 0.5);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    
+    dt {
+      font-weight: 700;
+      color: var(--highlight-color);
+      user-select: none;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    dt::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-family: monospace;
+    }
+    
+    dd {
+      margin: 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      padding-bottom: 0.5rem;
+    }
+    
+    dd:last-of-type {
+      border-bottom: none;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .skill-card {
+      background: linear-gradient(135deg, var(--secondary-color), var(--card-bg));
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--accent-color), var(--highlight-color), var(--accent-color));
+      z-index: -1;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+    
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    
+    .skill-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #9333ea, #4f46e5);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.4);
+    }
+    
+    .rank-badge::before {
+      content: '★';
+      margin-right: 0.4rem;
+      color: #fcd34d;
+    }
+
+    footer {
+      background-color: rgba(15, 23, 42, 0.9);
+      text-align: center;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      padding: 1.5rem 0;
+      user-select: none;
+      border-top: 1px solid rgba(139, 92, 246, 0.3);
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+    
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(139, 92, 246, 0.2);
+      border-radius: 50%;
+      color: var(--text-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: var(--neon-glow);
+    }
+    
+    /* Animation keyframes */
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      main {
+        padding: 0 1rem;
+        margin: 2rem auto 3rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 1.6rem;
+      }
+      
+      .bio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      dl {
+        grid-template-columns: 1fr;
+        gap: 0.5rem 0;
+      }
+      
+      dt {
+        border-bottom: none;
+      }
+      
+      dd {
+        padding-left: 20px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo" tabindex="0" aria-label="Gamer logo and name">Canard`</div>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" tabindex="0">Home</a>
+      <a href="about.html" tabindex="0" class="active" aria-current="page">About</a>
+      <a href="games.html" tabindex="0">Games Played</a>
+      <a href="contact.html" tabindex="0">Contact</a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <section id="about" tabindex="0">
+      <h2>Player Profile</h2>
+      
+      <div class="bio-grid">
+        <div class="profile-pic">
+          <img src="assets/img/ChatGPT Image May 9, 2025, 03_28_02 PM.png" alt="Canard's gaming profile" />
+        </div>
+        
+        <dl>
+          <dt>Username</dt><dd>Canard`</dd>
+          <dt>Real Name</dt><dd>Achmad Amirul Ahad</dd>
+          <dt>Born</dt><dd>09 Januari 2005</dd>
+          <dt>Status</dt><dd>Full-time Gamer</dd>
+          <dt>Main Platform</dt><dd>Mobile</dd>
+          <dt>Playing Since</dt><dd>2015</dd>
+        </dl>
+      </div>
+      
+      <h3>Gaming Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🎯</div>
+          <div class="skill-name">FPS Mastery</div>
+          <div class="rank-badge">Expert</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">⚔️</div>
+          <div class="skill-name">Close Combat</div>
+          <div class="rank-badge">Advanced</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">🔫</div>
+          <div class="skill-name">Sniping</div>
+          <div class="rank-badge">Pro</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">🧠</div>
+          <div class="skill-name">Strategy</div>
+          <div class="rank-badge">Skilled</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">🕹️</div>
+          <div class="skill-name">Game Sense</div>
+          <div class="rank-badge">Expert</div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-icon">👥</div>
+          <div class="skill-name">Team Play</div>
+          <div class="rank-badge">Advanced</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="socials">
+      <a href="#" class="social-icon" aria-label="Discord">👾</a>
+      <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+      <a href="#" class="social-icon" aria-label="Twitch">🎮</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+    </div>
+    &copy; 2025 Canard`. All rights reserved.
+  </footer>
+</body>
+</html>
