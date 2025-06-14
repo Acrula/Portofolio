@@ -8,19 +8,19 @@
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
 
     :root {
-      --primary-color: #0f172a; /* Dark blue/almost black */
-      --secondary-color: #312e81; /* Deep indigo */
-      --background-color: #020617; /* Very dark blue-black */
-      --card-bg: #1e293b; /* Slate-800 */
-      --text-color: #f1f5f9; /* Very light gray/almost white */
-      --accent-color: #8b5cf6; /* Purple-500 */
-      --accent-hover: #7c3aed; /* Purple-600 */
-      --highlight-color: #06b6d4; /* Cyan */
-      --neon-glow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
-      --text-glow: 0 0 2px rgba(139, 92, 246, 0.8);
+      --primary-color: #e0f2fe; /* Soft sky blue */
+      --secondary-color: #c7d2fe; /* Soft indigo */
+      --background-color: #f8fafc; /* Very light gray-blue */
+      --card-bg: #f1f5f9; /* Light slate */
+      --text-color: #1e293b; /* Dark slate */
+      --accent-color: #a78bfa; /* Light purple */
+      --accent-hover: #c4b5fd; /* Softer purple */
+      --highlight-color: #67e8f9; /* Soft cyan */
+      --neon-glow: none;
+      --text-glow: none;
     }
 
-    * { 
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -37,13 +37,13 @@
     }
 
     header {
-      background-color: rgba(15, 23, 42, 0.8);
+      background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -55,7 +55,7 @@
       color: var(--text-color);
       letter-spacing: 4px;
       user-select: none;
-      text-shadow: var(--neon-glow);
+      text-shadow: none;
       position: relative;
       display: inline-block;
     }
@@ -72,7 +72,7 @@
 
     nav {
       display: flex;
-      flex-wrap: wrap; /* Allow wrapping */
+      flex-wrap: wrap;
       gap: 1rem;
     }
 
@@ -86,12 +86,13 @@
     }
 
     nav a.active {
-      background-color: rgba(139, 92, 246, 0.2);
-      color: var(--accent-color);
+      background-color: var(--accent-hover);
+      color: white;
     }
 
     nav a:hover {
-      background-color: rgba(139, 92, 246, 0.1);
+      background-color: var(--accent-color);
+      color: white;
     }
 
     main {
@@ -105,7 +106,7 @@
       background-color: var(--card-bg);
       border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     section h2 {
@@ -113,7 +114,7 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--accent-color);
-      text-shadow: var(--text-glow);
+      text-shadow: none;
     }
 
     #home p {
@@ -123,9 +124,9 @@
     }
 
     footer {
-      background-color: rgba(15,  23 , 42, 0.9);
+      background-color: #e2e8f0;
       text-align: center;
-      color: var(--text-color);
+      color: #334155;
       font-size: 0.9rem;
       padding: 1.5rem 0;
       user-select: none;
@@ -146,35 +147,35 @@
       }
 
       header .logo {
-        font-size: 2rem; /* Adjust logo size */
+        font-size: 2rem;
       }
 
       nav a {
-        padding: 0.4rem 0.8rem; /* Adjust padding for smaller screens */
+        padding: 0.4rem 0.8rem;
       }
     }
 
     @media (max-width: 480px) {
       section {
-        padding: 1.5rem; /* Reduce padding for smaller devices */
+        padding: 1.5rem;
       }
 
       section h2 {
-        font-size: 1.4rem; /* Further reduce heading size */
+        font-size: 1.4rem;
       }
 
       #home p {
-        font-size: 1rem; /* Adjust paragraph size */
+        font-size: 1rem;
       }
 
       nav {
-        flex-direction: column; /* Stack navigation items */
-        align-items: center; /* Center align items */
+        flex-direction: column;
+        align-items: center;
       }
 
       nav a {
-        width: 100%; /* Make links full width */
-        text-align: center; /* Center text */
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
