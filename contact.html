@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Contact - Canard` Gamer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Games Played - Canard`</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
 
@@ -21,22 +20,19 @@
       --text-glow: none;
     }
 
-    * { 
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: 'Rajdhani', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
     header {
@@ -44,370 +40,269 @@
       backdrop-filter: blur(10px);
       padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    header .logo {
+    .logo {
       font-family: 'Audiowide', cursive;
       font-size: 2.5rem;
       color: var(--text-color);
-      letter-spacing: 4px;
-      user-select: none;
       text-shadow: none;
-      position: relative;
-      display: inline-block;
     }
 
     nav {
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
     }
 
-    nav a { 
+    nav a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 600;
       padding: 0.5rem 1rem;
       border-radius: 6px;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    nav a.active { 
-      background-color: var(--accent-hover);
-      color: white;
-    }
-
+    nav a.active,
     nav a:hover {
       background-color: var(--accent-color);
       color: white;
     }
 
     main {
-      max-width: 900px;
-      margin: 3rem auto 4rem;
-      padding: 0 1.5rem;
+      flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
     section {
-      margin-bottom: 3rem;
       background-color: var(--card-bg);
       border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
     section h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2rem;
-      margin-bottom: 1rem;
       color: var(--accent-color);
-      text-shadow: none;
-    }
-
-    #contact p {
-      font-size: 1.15rem;
-      line-height: 1.6;
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
 
-    #contact-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    #contact-links li {
-     display: flex;
-    }
-
-    #contact-links a {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.5);
-      border-radius: 8px;
-      border: 1px solid rgba(167, 139, 250, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    #contact-links a:hover,
-    #contact-links a:focus {
-      background-color: rgba(167, 139, 250, 0.1);
-      border-color: var(--accent-color);
-      box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-      transform: translateY(-3px);
-    }
-
-    #contact-links img {
-      width: 40px;
-      height: 40px;
-      margin-right: 1rem;
-      object-fit: contain;
+    .game-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
     }
 
-    #contact-links a:hover img {
-      transform: scale(1.1);
+    .game-card:hover {
+      transform: translateY(-5px);
     }
 
-    #contact-links span {
+    .game-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .game-card:hover .game-image img {
+      transform: scale(1.05);
+    }
+
+    .game-header {
+      background-color: var(--accent-color);
+      text-align: center;
+      padding: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    .game-stats {
+      padding: 1rem 1.5rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
       font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    .stat-highlight {
+      color: var(--highlight-color);
+    }
+
+    .badge-row {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      background-color: var(--secondary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .badge.pro {
+      background: linear-gradient(to right, #a78bfa, #c4b5fd);
+    }
+
+    .badge.elite {
+      background: linear-gradient(to right, #c4b5fd, #a78bfa);
+      color: black;
     }
 
     footer {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: #e2e8f0;
+      color: #334155;
       text-align: center;
-      color: var(--text-color);
+      padding: 1.2rem;
       font-size: 0.9rem;
-      padding: 1.5rem 0;
-      user-select: none;
-      border-top: 1px solid rgba(167, 139, 250, 0.3);
-      position: relative;
     }
 
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(167, 139, 250, 0.2);
-      border-radius: 50%;
-      color: var(--text-color);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .social-icon:hover {
-      background-color: var(--accent-color);
-      transform: translateY(-3px);
-      box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-    }
-
-    /* Responsive Breakpoints */
-    @media (max-width: 992px) {
-      header {
-        padding: 1rem 1.5rem;
-      }
-
-      .logo {
-        font-size: 2rem;
-      }
-
-      section {
-        padding: 1.75rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        padding: 1rem;
-      }
-
-      .logo {
-        font-size: 1.8rem;
-        letter-spacing: 2px;
-      }
-
-      nav {
-        gap: 0.25rem;
-      }
-
-      nav a {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
-      }
-
-      main {
-        margin: 2rem auto;
-        padding: 0 1.25rem;
-      }
-
-      section {
-        padding: 1.5rem;
-      }
-
-      section h2 {
-        font-size: 1.7rem;
-      }
-
-      #contact p {
+    @media (max-width: 480px) {
+      .game-header {
         font-size: 1.1rem;
       }
 
-      #contact-links {
-        grid-template-columns: 1fr;
+      .game-image img {
+        height: 160px;
       }
-    }
 
-    @media (max-width: 576px) {
-      header {
+      nav {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-      }
-
-      .logo {
-        text-align: center;
-        width: 100%;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      nav a {
-        margin: 0.25rem;
-        font-size: 0.85rem;
-      }
-
-      main {
-        padding: 0 1rem;
-        margin: 1.5rem auto;
-      }
-
-      section {
-        padding: 1.25rem;
-      }
-
-      section h2 {
-        font-size: 1.5rem;
-      }
-
-      #contact-links a {
-        padding: 0.75rem;
-      }
-
-      #contact-links img {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.75rem;
-      }
-
-      #contact-links span {
-        font-size: 1rem;
-      }
-
-      footer {
-        padding: 1.25rem 0;
-      }
-
-      .socials {
-        gap: 0.75rem;
-      }
-
-      .social-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .logo {
-        font-size: 1.6rem;
-      }
-
-      nav a {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.8rem;
-      }
-
-      section {
-        padding: 1rem;
-      }
-
-      section h2 {
-        font-size: 1.4rem;
-      }
-
-      #contact-links a {
-        padding: 0.6rem;
-      }
-
-      #contact-links img {
-        width: 28px;
-        height: 28px;
-      }
-    }
-
-    /* Reduce motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        gap: 0.25rem;
       }
     }
   </style>
 </head>
 <body>
   <header role="banner">
-    <div class="logo" tabindex="0" aria-label="Canard Gamer Portfolio logo">Canard`</div>
-    <nav aria-label="Primary navigation">
-      <a href="index.html" tabindex="0">Home</a>
-      <a href="about.html" tabindex="0">About</a>
-      <a href="games.html" tabindex="0">Games Played</a>
-      <a href="contact.html" tabindex="0" class="active" aria-current="page">Contact</a>
+    <div class="logo" aria-label="Canard Logo" tabindex="0">Canard`</div>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="games.html" class="active" aria-current="page">Games Played</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main role="main">
-    <section id="contact" tabindex="0">
-      <h2>Contact</h2>
-      <p>If you'd like to get in touch or follow my gaming journey, feel free to connect through these platforms.</p>
-      <ul id="contact-links" aria-label="Contact links">
-        <li>
-          <a href="https://www.instagram.com/acrula_?igsh=MTI4NGVtbmtpZTh5dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="assets/img/10462345.png" alt="Instagram" loading="lazy" />
-            <span>Instagram</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/Acrula" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/img/Github.png" alt="GitHub" loading="lazy" />
-            <span>GitHub</span>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:ahmadamirulahad@gmail.com" aria-label="Email contact">
-            <img src="assets/img/Gmail.png" alt="Email" loading="lazy" />
-            <span>Email</span>
-          </a>
-        </li>
-      </ul>
+    <section id="games" tabindex="0">
+      <h2>Games Played</h2>
+      <div class="games-grid">
+
+        <!-- Game Card 1 -->
+        <div class="game-card">
+          <div class="game-image">
+            <img src="assets/img/codm.png" alt="Call of Duty Mobile" />
+          </div>
+          <div class="game-header">Call of Duty Mobile</div>
+          <div class="game-stats">
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-label">Playtime</div>
+                <div class="stat-value">1027 hrs</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Rank</div>
+                <div class="stat-value">Legendary</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">K/D Ratio</div>
+                <div class="stat-value stat-highlight">1.60</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value">68%</div>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge pro">Mastery</span>
+              <span class="badge">19x Legendary</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game Card 2 -->
+        <div class="game-card">
+          <div class="game-image">
+            <img src="assets/img/Delta Force.png" alt="Delta Force Mobile" />
+          </div>
+          <div class="game-header">Delta Force Mobile</div>
+          <div class="game-stats">
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-label">Playtime</div>
+                <div class="stat-value">18 hrs</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Rank</div>
+                <div class="stat-value">Marshal</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value">18.9%</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Wins</div>
+                <div class="stat-value stat-highlight">148</div>
+              </div>
+            </div>
+            <div class="badge-row">
+              <span class="badge elite">Sniper Master</span>
+              <span class="badge">Sniper Specialist</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
   </main>
 
   <footer role="contentinfo">
-    <div class="socials">
-      <a href="#" class="social-icon" aria-label="Discord">👾</a>
-      <a href="#" class="social-icon" aria-label="YouTube">📺</a>
-      <a href="#" class="social-icon" aria-label="Twitch">🎮</a>
-      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
-    </div>
     &copy; 2025 Canard`. All rights reserved.
   </footer>
 </body>
