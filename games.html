@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Games Played - MyPortfolio</title>
+  <title>Games Played - Canard`</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Audiowide&display=swap');
 
     :root {
-      --primary-color: #0f172a;
-      --secondary-color: #312e81;
-      --background-color: #020617;
-      --card-bg: #1e293b;
-      --text-color: #f1f5f9;
-      --accent-color: #8b5cf6;
-      --accent-hover: #7c3aed;
-      --stat-highlight: #10B981;
-      --neon-glow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
-      --text-glow: 0 0 2px rgba(139, 92, 246, 0.8);
+      --primary-color: #e0f2fe; /* Soft sky blue */
+      --secondary-color: #c7d2fe; /* Soft indigo */
+      --background-color: #f8fafc; /* Very light gray-blue */
+      --card-bg: #f1f5f9; /* Light slate */
+      --text-color: #1e293b; /* Dark slate */
+      --accent-color: #a78bfa; /* Light purple */
+      --accent-hover: #c4b5fd; /* Softer purple */
+      --highlight-color: #67e8f9; /* Soft cyan */
+      --neon-glow: none;
+      --text-glow: none;
     }
 
     * {
@@ -30,36 +30,34 @@
       font-family: 'Rajdhani', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background-color: rgba(15, 23, 42, 0.8);
+      background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    header .logo {
+    .logo {
       font-family: 'Audiowide', cursive;
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--text-color);
-      text-shadow: var(--neon-glow);
-      letter-spacing: 2px;
+      text-shadow: none;
     }
 
     nav {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
     }
 
     nav a {
@@ -68,7 +66,7 @@
       font-weight: 600;
       padding: 0.5rem 1rem;
       border-radius: 6px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     nav a.active,
@@ -78,10 +76,10 @@
     }
 
     main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
       flex: 1;
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
     section {
@@ -89,21 +87,21 @@
       border-radius: 12px;
       padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
     section h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2rem;
-      margin-bottom: 1.5rem;
       color: var(--accent-color);
       border-bottom: 3px solid var(--accent-color);
       padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
@@ -111,19 +109,17 @@
       background: var(--card-bg);
       border-radius: 10px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
 
     .game-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
     .game-image img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 180px;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
@@ -134,16 +130,16 @@
 
     .game-header {
       background-color: var(--accent-color);
-      color: white;
+      text-align: center;
       padding: 1rem;
       font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
       font-size: 1.3rem;
-      font-weight: 700;
-      text-align: center;
+      color: white;
     }
 
     .game-stats {
-      padding: 1.5rem;
+      padding: 1rem 1.5rem;
     }
 
     .stat-grid {
@@ -157,83 +153,62 @@
     }
 
     .stat-label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--secondary-color);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
     }
 
     .stat-value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text-color);
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
     .stat-highlight {
-      color: var(--stat-highlight);
+      color: var(--highlight-color);
     }
 
     .badge-row {
       margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 0.5rem;
       flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .badge {
-      background: var(--secondary-color);
-      color: white;
-      padding: 0.3rem 0.6rem;
+      background-color: var(--secondary-color);
+      padding: 0.3rem 0.8rem;
       border-radius: 20px;
       font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .badge.elite {
-      background: linear-gradient(135deg, #FF4500, #FFD700);
+      color: white;
+      font-weight: bold;
     }
 
     .badge.pro {
-      background: linear-gradient(135deg, #9333EA, #3B82F6);
+      background: linear-gradient(to right, #a78bfa, #c4b5fd);
+    }
+
+    .badge.elite {
+      background: linear-gradient(to right, #c4b5fd, #a78bfa);
+      color: black;
     }
 
     footer {
-      background-color: rgba(15, 23, 42, 0.9);
+      background-color: #e2e8f0;
+      color: #334155;
       text-align: center;
-      color: var(--text-color);
+      padding: 1.2rem;
       font-size: 0.9rem;
-      padding: 1.5rem 0;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-
-      section h2 {
-        font-size: 1.6rem;
-      }
-
-      .stat-value {
-        font-size: 1.2rem;
-      }
     }
 
     @media (max-width: 480px) {
-      header .logo {
-        font-size: 1.5rem;
-      }
-
       .game-header {
         font-size: 1.1rem;
-        padding: 0.75rem;
       }
 
-      .game-stats {
-        padding: 1rem;
+      .game-image img {
+        height: 160px;
       }
 
       nav {
@@ -245,14 +220,15 @@
 </head>
 <body>
   <header role="banner">
-    <div class="logo" tabindex="0" aria-label="Gamer logo and name">Canard`</div>
-    <nav aria-label="Primary navigation">
-      <a href="index.html" tabindex="0">Home</a>
-      <a href="about.html" tabindex="0">About</a>
-      <a href="games.html" class="active" aria-current="page" tabindex="0">Games Played</a>
-      <a href="contact.html" tabindex="0">Contact</a>
+    <div class="logo" aria-label="Canard Logo" tabindex="0">Canard`</div>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="games.html" class="active" aria-current="page">Games Played</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
+
   <main role="main">
     <section id="games" tabindex="0">
       <h2>Games Played</h2>
@@ -325,6 +301,7 @@
       </div>
     </section>
   </main>
+
   <footer role="contentinfo">
     &copy; 2025 Canard`. All rights reserved.
   </footer>
